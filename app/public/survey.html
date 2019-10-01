@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Start the Survey</title>
 </head>
+
 <body>
-    
+    <div class="container">
+            <% include ./partials/navbar %>
+
+        <h1 class="text-center" style="font-weight: 800; margin-top: 20px; margin-bottom: 40px;">Survey Questions</h1>
+
+        <h2 id="about"> <b>About you</b></h2>
+        <form action="/api/friends" method="POST">
+            First name:<br>
+            <input type="text" name="firstname" class="info" required>
+            <br>
+            Last name:<br>
+            <input type="text" name="lastname" class="info" required>
+            <br><br>
+
+            Image link: <br>
+            <input type="text" name="url" class="info" required>
+            <br><br>
+
+            <% for (var i = 0; i < res.length; i++){%>
+            <h2>Question <%= i + 1%>:</h2>
+            <h3> <i><%= res[i].question%></i></h3>
+            <select name="question<%=i+1%>" placeholder="Choose an option" required>
+                    <option value="1">1 (Strongly disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly agree)</option>
+                  </select>
+            <br><br><br><br>
+            <% } %>
+            <button id="match" class="btn btn-info"">Find a Match</button>
+        </form>
+
+    </div>
+      
 </body>
+
 </html>
+

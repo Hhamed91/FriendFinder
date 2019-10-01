@@ -59,6 +59,19 @@ app.get("/app/friends", function (req, res) {
         if (response[i].scores[x] != ",")
           friend.scores.push(response[i].scores[p]);
       }
+
+      //  //-- now calculate the oppositesScore which is  --//
+      //       //-- totalDifference between the friend scores and the users scores --//
+      //       //-- The less difference, the more compatible --//
+      //       for (var y=0; y<friends[x].scores.length; y++) {
+      //         totalDifference += Math.abs(parseInt(userScores[y]) - parseInt(friends[x].scores[y]));
+
+      //         if (totalDifference <= match.oppositesScore) {
+      //             match.closestMatch = friends[x];
+      //             match.oppositesScore = totalDifference;
+      //             //console.log("The new best match is " + match.closestMatch.name + " with a friend score of: " + totalDifference + "\n");
+      //         } 
+      //     }
       friends.push(friend);
     }
     res.json(friends);
@@ -67,7 +80,7 @@ app.get("/app/friends", function (req, res) {
 
 app.post("/app/friends", function (req, res) {
   var name = req.body.firstname + " " + req.body.lastname;
-  var link = req.body.link;
+  var link = req.body.url;
   var scores = [
     parseInt(req.body.question1),
     parseInt(req.body.question2),
@@ -109,5 +122,3 @@ app.post("/app/friends", function (req, res) {
   app.listen(PORT, function () {
     console.log("App is listening on PORT " + PORT);
   });
-
-
