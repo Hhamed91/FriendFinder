@@ -224,7 +224,6 @@ var friends = [
         ]
    },
    {
-       //Wade Moore
         "name": "Kim Jong-il",
         "photo": "assets/images/selfie.jpg",
         "scores": [
